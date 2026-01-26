@@ -1,6 +1,20 @@
 spring:
   application:
     name: toys-mart
+  jpa:
+    hibernate:
+      ddl-auto: none
+  datasource:
+    url: jdbc:h2:mem:testdb
+    username: sa
+    password:
+    driver-class-name: org.h2.Driver
+  sql:
+    init:
+      schema-locations: optional:classpath:sql/schema.sql
+      data-locations: optional:classpath:sql/data.sql
+      mode: always
+
 logging:
   pattern:
     console: "%green(%d{HH:mm:ss.SSS}) %blue(%-5level) %red([%thread]) %yellow(%logger{15}) - %msg%n"

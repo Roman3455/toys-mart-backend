@@ -1,1 +1,1 @@
-rootProject.name = "toys-mart"
+rootProject.name = "toys-mart-backend"
