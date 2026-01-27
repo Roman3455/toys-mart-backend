@@ -52,3 +52,6 @@ lerna-debug.log*
 ### Environment Variables ###
 http-client.private.env.json
 .env
+
+### Project Folders ###
+/dev-db-storage/**
