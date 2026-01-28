@@ -1,6 +1,6 @@
 package com.roman3455.toysmart.controller;
 
-import com.roman3455.toysmart.entity.Product;
+import com.roman3455.toysmart.dto.ProductDto;
 import com.roman3455.toysmart.service.ProductService;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -19,7 +19,7 @@ public class ProductController {
     }
 
     @GetMapping
-    public List<Product> getProducts() {
+    public List<ProductDto> getProducts() {
         return productService.getAllProducts();
     }
 
