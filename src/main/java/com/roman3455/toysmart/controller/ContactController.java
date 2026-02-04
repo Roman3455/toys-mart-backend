@@ -2,6 +2,7 @@ package com.roman3455.toysmart.controller;
 
 import com.roman3455.toysmart.dto.ContactRequestDto;
 import com.roman3455.toysmart.service.ContactService;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -18,11 +19,11 @@ public class ContactController {
     }
 
     @PostMapping
-    public String saveContact(@RequestBody ContactRequestDto contactRequestDto) {
+    public ResponseEntity<String> saveContact(@RequestBody ContactRequestDto contactRequestDto) {
         boolean isSaved = contactService.saveContact(contactRequestDto);
         return isSaved
-                ? "Request processed successfully"
-                : "An error occurred while saving the contact";
+                ? ResponseEntity.ok().body("Request processed successfully")
+                : ResponseEntity.internalServerError().body("An error occurred while saving the contact");
     }
 
 }

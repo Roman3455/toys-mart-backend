@@ -2,6 +2,7 @@ package com.roman3455.toysmart.controller;
 
 import com.roman3455.toysmart.dto.ProductDto;
 import com.roman3455.toysmart.service.ProductService;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -19,8 +20,8 @@ public class ProductController {
     }
 
     @GetMapping
-    public List<ProductDto> getProducts() {
-        return productService.getAllProducts();
+    public ResponseEntity<List<ProductDto>> getProducts() {
+        return ResponseEntity.ok().body(productService.getAllProducts());
     }
 
 }
