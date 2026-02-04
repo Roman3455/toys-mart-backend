@@ -20,15 +20,11 @@ public class ContactServiceImpl implements ContactService {
 
     @Override
     public boolean saveContact(ContactRequestDto contactRequestDto) {
-        try {
-            Contact contact = mapToEntity(contactRequestDto);
-            contact.setCreatedAt(Instant.now());
-            contact.setCreatedBy(contactRequestDto.getName());
-            contactRepository.save(contact);
-            return true;
-        } catch (Exception e) {
-            return false;
-        }
+        Contact contact = mapToEntity(contactRequestDto);
+        contact.setCreatedAt(Instant.now());
+        contact.setCreatedBy(contactRequestDto.getName());
+        contactRepository.save(contact);
+        return true;
     }
 
     private Contact mapToEntity(ContactRequestDto contactRequestDto) {

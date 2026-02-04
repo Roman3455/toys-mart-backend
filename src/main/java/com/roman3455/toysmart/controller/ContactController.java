@@ -20,10 +20,8 @@ public class ContactController {
 
     @PostMapping
     public ResponseEntity<String> saveContact(@RequestBody ContactRequestDto contactRequestDto) {
-        boolean isSaved = contactService.saveContact(contactRequestDto);
-        return isSaved
-                ? ResponseEntity.ok().body("Request processed successfully")
-                : ResponseEntity.internalServerError().body("An error occurred while saving the contact");
+        contactService.saveContact(contactRequestDto);
+        return ResponseEntity.ok().body("Request processed successfully");
     }
 
 }
