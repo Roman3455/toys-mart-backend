@@ -2,6 +2,7 @@ package com.roman3455.toysmart.controller;
 
 import com.roman3455.toysmart.dto.ContactRequestDto;
 import com.roman3455.toysmart.service.ContactService;
+import jakarta.validation.Valid;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -19,7 +20,7 @@ public class ContactController {
     }
 
     @PostMapping
-    public ResponseEntity<String> saveContact(@RequestBody ContactRequestDto contactRequestDto) {
+    public ResponseEntity<String> saveContact(@Valid @RequestBody ContactRequestDto contactRequestDto) {
         contactService.saveContact(contactRequestDto);
         return ResponseEntity.ok().body("Request processed successfully");
     }
