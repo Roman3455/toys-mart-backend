@@ -6,13 +6,10 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
-import org.hibernate.annotations.ColumnDefault;
-
-import java.time.Instant;
 
 @Entity
 @Table(name = "CONTACTS")
-public class Contact {
+public class Contact extends BaseEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "CONTACT_ID", nullable = false)
@@ -29,21 +26,6 @@ public class Contact {
 
     @Column(name = "MESSAGE", nullable = false, length = 500)
     private String message;
-
-    @ColumnDefault("CURRENT_TIMESTAMP")
-    @Column(name = "CREATED_AT", nullable = false)
-    private Instant createdAt;
-
-    @Column(name = "CREATED_BY", nullable = false, length = 20)
-    private String createdBy;
-
-    @ColumnDefault("NULL")
-    @Column(name = "UPDATED_AT")
-    private Instant updatedAt;
-
-    @ColumnDefault("NULL")
-    @Column(name = "UPDATED_BY", length = 20)
-    private String updatedBy;
 
     public Long getId() {
         return id;
@@ -83,38 +65,6 @@ public class Contact {
 
     public void setMessage(String message) {
         this.message = message;
-    }
-
-    public Instant getCreatedAt() {
-        return createdAt;
-    }
-
-    public void setCreatedAt(Instant createdAt) {
-        this.createdAt = createdAt;
-    }
-
-    public String getCreatedBy() {
-        return createdBy;
-    }
-
-    public void setCreatedBy(String createdBy) {
-        this.createdBy = createdBy;
-    }
-
-    public Instant getUpdatedAt() {
-        return updatedAt;
-    }
-
-    public void setUpdatedAt(Instant updatedAt) {
-        this.updatedAt = updatedAt;
-    }
-
-    public String getUpdatedBy() {
-        return updatedBy;
-    }
-
-    public void setUpdatedBy(String updatedBy) {
-        this.updatedBy = updatedBy;
     }
 
 }

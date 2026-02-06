@@ -6,14 +6,12 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
-import org.hibernate.annotations.ColumnDefault;
 
 import java.math.BigDecimal;
-import java.time.Instant;
 
 @Entity
 @Table(name = "products")
-public class Product {
+public class Product extends BaseEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -34,21 +32,6 @@ public class Product {
 
     @Column(name = "IMAGE_URL", length = 500)
     private String imageUrl;
-
-    @ColumnDefault("CURRENT_TIMESTAMP")
-    @Column(name = "CREATED_AT", nullable = false)
-    private Instant createdAt;
-
-    @Column(name = "CREATED_BY", nullable = false, length = 20)
-    private String createdBy;
-
-    @ColumnDefault("NULL")
-    @Column(name = "UPDATED_AT")
-    private Instant updatedAt;
-
-    @ColumnDefault("NULL")
-    @Column(name = "UPDATED_BY", length = 20)
-    private String updatedBy;
 
     public Long getProductId() {
         return productId;
@@ -96,38 +79,6 @@ public class Product {
 
     public void setImageUrl(String imageUrl) {
         this.imageUrl = imageUrl;
-    }
-
-    public Instant getCreatedAt() {
-        return createdAt;
-    }
-
-    public void setCreatedAt(Instant createdAt) {
-        this.createdAt = createdAt;
-    }
-
-    public String getCreatedBy() {
-        return createdBy;
-    }
-
-    public void setCreatedBy(String createdBy) {
-        this.createdBy = createdBy;
-    }
-
-    public Instant getUpdatedAt() {
-        return updatedAt;
-    }
-
-    public void setUpdatedAt(Instant updatedAt) {
-        this.updatedAt = updatedAt;
-    }
-
-    public String getUpdatedBy() {
-        return updatedBy;
-    }
-
-    public void setUpdatedBy(String updatedBy) {
-        this.updatedBy = updatedBy;
     }
 
 }
